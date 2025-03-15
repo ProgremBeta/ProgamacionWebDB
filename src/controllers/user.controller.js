@@ -1,5 +1,7 @@
+//Se importa los archivos user.service
 const userService = require ('../services/user.service');
 
+//Exporta la funcion de crear usuario y muestra mensaje de exito o error
 exports.createUser = async (req, res) =>{
     try{
         const { nombre, email, password, rol_id, administrador_id} = req.body;
@@ -10,6 +12,7 @@ exports.createUser = async (req, res) =>{
     }
 };
 
+//Exporta la funcion de actualizar usuario
 exports.updateUser = async(req,res) => {
     const{id} = req.params;
 };

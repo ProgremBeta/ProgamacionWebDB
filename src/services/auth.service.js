@@ -12,7 +12,7 @@ exports.loginUser = async (email, password) =>{
     try{
         const user = await User.findOne({ where:{email}});
         if(!user){
-            throw new Error('Usuarion no encontrado');
+            throw new Error('Usuario no encontrado');
         }
 
         const isPasswordValid = await bcrypt.compare(password, user.password);
@@ -22,14 +22,14 @@ exports.loginUser = async (email, password) =>{
 
         const rolePermissions = await RolePermission.findAll({
             where: {rol_id: user.rol_id},
-            atributes : ['permiso_id']
+            attributes : ['permiso_id']
         });
 
         const permiso = rolePermissions.map(rp => rp.permiso_id);
-        const token = jwt.sing(
+        const token = jwt.sign(
             {id: user.id , nombre: user.nombre, email: user.email , rol_id: user.rol_id, permiso},
             SECRET_KEY,
-            {expireIn: '1h'}
+            {expiresIn: '1h'}
         );
         return token;
     } catch(error){

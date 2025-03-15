@@ -1,7 +1,10 @@
+//Se importan los modulos
 const dotenv = require('dotenv');
 
+//Se llama las variables de entorno
 dotenv.config();
 
+//Se exporta las variables de entorno
 module.exports = {
     PORT: process.env.PORT,
     DB_NAME: process.env.DB_NAME,

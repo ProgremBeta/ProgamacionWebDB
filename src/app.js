@@ -1,16 +1,25 @@
+//Se importan los modulos express y cors.
+//se llama o se inicializa express
 const express = require('express');
 const cors = require('cors');
 const app = express();
 
+//Permite el uso de datos json
+//Permite el uso de solicitudes HTTP
 app.use(express.json());
 app.use(cors());
 
+
+//Importa las rutas
 const userRouter = require('./routes/user.routes');
-const autRoutes = require('./routes/aut.routes');
+const authRoutes = require('./routes/auth.routes');
 const projectRoutes = require('./routes/project.routes');
 
+//Se declaran las rutas
 app.use('/api/v1', userRouter);
-app.use('/api/v1', authRouter);
-app.use('/api/v1', projectRouter);
+app.use('/api/v1', authRoutes);
+app.use('/api/v1', projectRoutes);
 
+
+//Exporta el archivo o modulo
 module.exports = app;

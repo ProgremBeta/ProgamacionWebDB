@@ -1,14 +1,18 @@
-const {Sequielize} = require('sequelize');
+//Se importan los paquetes 
+const {Sequelize} = require('sequelize');
 const dotenv = require('dotenv');
 
+//Se llama las variables de entorno
 dotenv.config();
 
-const sequielize = new Sequielize (process.env.DB_NAME, process.env.BD_PASSWORD,{
+//Se crea la conexion de la bse de datos
+const sequelize = new Sequelize (process.env.DB_NAME, process.env.DB_PASSWORD,{
     host: process.env.DB_HOST,
     dialect: 'postgres',
     port: process.env.DB_PORT,
-    loggin: false,
+    logging: false,
     timezone: '-05:00'
 });
 
-module.exports = sequielize;
+//Se exporta el modulo
+module.exports = sequelize;

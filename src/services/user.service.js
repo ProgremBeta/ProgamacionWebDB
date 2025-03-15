@@ -18,7 +18,7 @@ exports.createUser = async (nombre, email, password, rol_id, administrador_id) =
             administrador_id
         });
 
-        return new User;
+        return newUser;
     } catch (erro){
         throw new Error('Error al crear el nuevo usuario: ${err.message}');
     }
