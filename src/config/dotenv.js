@@ -1,4 +1,4 @@
-//Se importan los modulos
+//Se declara una variable a dontenv
 const dotenv = require('dotenv');
 
 //Se llama las variables de entorno

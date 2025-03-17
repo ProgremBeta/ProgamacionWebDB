@@ -1,9 +1,9 @@
 //Se importan los archivos
-const User = require('./user.model');
+const User = require('./userProject.model');
 const Project = require('./project.model');
 const UserProject = require('./UserProject.model');
 
-//Verifica los usuarios en un proyecto o proyectos con usuarios
+//Verifica los usuarios en un proyecto o proyectos que este relacionados a un usuarios
 User.belongsToMany(Project,{ through: UserProject, foreingkey: 'Usuario_id', as:'Proyectos'});
 Project.belongsToMany(User,{ through: UserProject, foreingkey: 'Project_id', as:'Usuarios'});
 

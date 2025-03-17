@@ -1,7 +1,7 @@
 //Se importan los archivos
 const {DataTypes} = require('sequelize');
 const sequelize = require('../config/db');
-const User = require('./user.model');
+const User = require('./userProject.model');
 
 //Se declaran los nombre de id, nombre, description, fechaCreacion, administrador_id.
 //Se definen sus propiedades
@@ -27,10 +27,10 @@ const project = sequelize.define('proyecto',{
         allowNull: false,
         references: {model: User, key:'id'}
     }
-},
-{
+},{
     timesstamps: false,
     tableName:'proyectos',
+    hooks:{
         afterCreate: (Project, option) =>{
             if(project.fechaCreacion){
                 project.fechaCreacion.setHours(project.fechaCreacion.getHours()-5);
