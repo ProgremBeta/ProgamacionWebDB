@@ -9,17 +9,15 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
-
-//Importa las rutas
+//Importa las rutas de los controladores de la API
 const userRouter = require('./routes/user.routes');
 const authRoutes = require('./routes/auth.routes');
 const projectRoutes = require('./routes/project.routes');
 
-//Se declaran las rutas
+//Se declaran las rutas del proyecto
 app.use('/api/v1', userRouter);
 app.use('/api/v1', authRoutes);
 app.use('/api/v1', projectRoutes);
-
 
 //Exporta el archivo o modulo
 module.exports = app;

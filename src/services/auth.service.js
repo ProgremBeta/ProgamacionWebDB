@@ -36,7 +36,7 @@ exports.loginUser = async (email, password) =>{
             SECRET_KEY,
             {expiresIn: '1h'}
         );
-        return token;
+        return {token, user};
     } catch(error){
         throw new Error(error.message || 'Error al iniciar sesion');
     }

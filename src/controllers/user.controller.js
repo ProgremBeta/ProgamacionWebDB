@@ -27,6 +27,7 @@ exports.getAllUsersByAdministradorId = async (req,res) => {
 //Realiza una consulta para ver todos lo usuarios por el rol
 exports.getAllUsersByRolId = async (req, res) => {
     try{
+        console.log('Consultando usuarios por rol, User.Controller.js');
         const users = await userService.getAllUsersByRolId(req.params.id);
         res.status(200).json({message: 'Usuarios consultados con exito', users})
     }catch (error){
@@ -34,7 +35,7 @@ exports.getAllUsersByRolId = async (req, res) => {
     }
 };
 
-//Exporta la funcion de actualizar usuario
+//Realiza la peticion para actualizar datos de usuarios
 exports.updateUser = async(req,res) => {
     const{id} = req.params;
     const {nombre, email, rol_id, administrador_id} = req.body;
@@ -47,10 +48,12 @@ exports.updateUser = async(req,res) => {
     }
 };
 
-//Exporta la funcion para eliminar un usuario
+//Ejecuta la funcion que eliminar un usuario
 exports.deleteUser = async (req, res) => {
+    console.log('Eliminando usuario desde user.controller.js ');
     const {id} = req.params;
     const admin_from_token = req.user.id;
+
     try{
         const result = await userService.deleteUser(id, admin_from_token);
         res.status(200).json(result);

@@ -1,19 +1,19 @@
 //Se importan los modulos
 const app = require('./app');
-const dotenv = require('./config/dotenv');
 const sequelize = require('./config/db');
+
 require('./models/associations');
 
 //se llaman las variables de entorno
-dotenv.config();
+require('dotenv').config();
 
 //Define el puerto del ejecucion
-const PORT = process.env.PORT || 5500;
+const PORT = process.env.PORT || 3000;
 
 //Verifica si la base de datos esta en ejecucion
 sequelize.authenticate()
     .then(() => {
-        console.log('Conectado con SQL ');
+        console.log('Conectado con postgresSQL ');
         app.listen(PORT, () => {
             console.log(`El servidor esta correindo en el puerto ${PORT}`)
         })

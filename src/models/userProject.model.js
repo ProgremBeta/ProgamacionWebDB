@@ -1,33 +1,30 @@
 //Se importan los modulos
 const {DataTypes} = require('sequelize');
 const sequelize = require('../config/db');
-const { UserProject } = require('./associations');
 //const { type } = require('express/lib/response');
 
-//
-const User = sequelize.define('Usuarios',{
-    id :{
-        type:DataTypes.INTEGER,
-        primarikey: true,
-        autoIncrement:true
+//Se declaran los nombre de id, nombre, email, password y rol_id, para la tabla usuariosProyecto.
+const UserProject = sequelize.define('UsuariosProyecto', {
+    id: {
+        type: DataTypes.INTEGER,
+        primaryKey: true,
+        autoIncrement: true,
+        field: 'id' // Nombre exacto de la columna en la base de datos
     },
-    nombre:{
-        type:DataTypes.STRING,
-        allowNull: false
-    },
-    email:{
-        type:DataTypes.STRING,
-        allowNull: false,
-        unique:true
-    },
-    password:{
-        type: DataTypes.STRING,
-        allowNull: false
-    },
-    rol_id:{
+    usuario_id: {
         type: DataTypes.INTEGER,
         allowNull: false,
+        field: 'usuario_id' // Nombre exacto de la columna en la base de datos
+    },
+    proyecto_id: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        field: 'proyecto_id' // Nombre exacto de la columna en la base de datos
     }
+}, {
+    timestamps: false,
+    tableName: 'usuarios_proyectos' // Nombre exacto de la tabla en la base de datos
 });
 
-module.export = User;
+//Se exporta el modulo de UserProject
+module.exports = UserProject;
