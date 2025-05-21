@@ -30,7 +30,7 @@ exports.createUser = async (nombre, email, password, rol_id, administrador_id) =
 };
 
 //Llama a todos los usuarios administradores por id o por email
-exports.getAllUsersByRolId = async (rol_id) => {
+exports.getAllUserByAdministradorId = async (rol_id) => {
     try {
         const users = await User.findAll({where: { rol_id },attributes: { exclude: ['password'] }});
         return users;
@@ -40,7 +40,7 @@ exports.getAllUsersByRolId = async (rol_id) => {
 };
 
 //Llama a todos los usuarios con el rol_id
-exports.getAllUserByRolId = async (rol_id) => {
+exports.getAllUsersByRolId = async (rol_id) => {
     try{
         console.log('Consultando usuarios por rol, User.Service.js');
         const users = await User.findAll({where:{rol_id},attributes:{exclude:['password']}});
